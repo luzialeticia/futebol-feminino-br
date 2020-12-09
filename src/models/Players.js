@@ -37,8 +37,11 @@ const playerSchema = new Schema({
         required: true
     },
     profilePhoto: String
+},
+{
+    versionKey: false
 })
 
-const playersCollection = mongoose.model('players', playerSchema)
+const PlayersCollection = mongoose.model('players', playerSchema)
 
-module.exports = {playersCollection}
+module.exports = PlayersCollection
