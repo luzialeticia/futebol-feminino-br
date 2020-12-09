@@ -36,6 +36,6 @@ const teamSchema = new Schema({
     logo: String
 })
 
-const teamsCollection = mongoose.model('teams', teamSchema)
+const TeamsCollection = mongoose.model('teams', teamSchema)
 
-module.exports = {teamsCollection}
+module.exports = {TeamsCollection}
