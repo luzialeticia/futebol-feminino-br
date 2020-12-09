@@ -10,6 +10,6 @@ db.connect()
 app.use(cors())
 app.use(express.json())
 app.use('/', cors(), index)
-app.use('/team', teams)
+app.use('/teams', teams)
 
 module.exports = app
