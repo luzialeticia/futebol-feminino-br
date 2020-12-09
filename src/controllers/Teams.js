@@ -1,7 +1,7 @@
 const teamsCollection = require('../models/Teams')
 
 //getAllTeams
-const getTeams = (req, res) => {
+const getAllTeams = (req, res) => {
     teamsCollection.find((error, teams) => {
         if(error) {
             return res.status(500).send(error)
