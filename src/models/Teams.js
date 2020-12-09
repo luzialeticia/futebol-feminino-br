@@ -34,6 +34,10 @@ const teamSchema = new Schema({
     },
     coach: String,
     logo: String
+},
+
+{
+    versionKey: false
 })
 
 const TeamsCollection = mongoose.model('teams', teamSchema)
