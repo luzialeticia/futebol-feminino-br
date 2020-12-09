@@ -9,7 +9,7 @@ Técnico: String
 Elenco: Array
 Escudo: String */
 
-const team = new Schema({
+const teamSchema = new Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
         auto: true,
@@ -19,13 +19,23 @@ const team = new Schema({
         type: String,
         required: true
     },
-    popularName: {
-        type: String,
-        required: false
-    },
+    popularName: String,
     initials: {
         type: String,
-        required: true
+        required: true,
+        minlength: 3,
+        maxlength: 3
     },
-    
+    state: {
+        type: String,
+        required: true,
+        minlength:2,
+        maxlength: 2
+    },
+    coach: String,
+    logo: String
 })
+
+const teamsCollection = mongoose.model('teams', teamSchema)
+
+module.exports = {teamsCollection}
