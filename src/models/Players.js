@@ -1,17 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-/*
-Nome completo: String
-Apelido: String
-Time: String
-Numeração: Number
-Data de nascimento: Data
-Posição: String
-Foto: String
-*/
-
-const playerSchema = new Schema({
+const Player = new Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
         auto: true,
@@ -42,6 +32,4 @@ const playerSchema = new Schema({
     versionKey: false
 })
 
-const PlayersCollection = mongoose.model('players', playerSchema)
-
-module.exports = PlayersCollection
+module.exports = mongoose.model('Player', Player)
