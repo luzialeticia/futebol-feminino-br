@@ -9,6 +9,7 @@ const teams = require('./routes/Teams')
 db.connect()
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 app.use('/', cors(), index)
 app.use('/teams', teams)
