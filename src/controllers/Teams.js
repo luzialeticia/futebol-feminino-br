@@ -2,57 +2,45 @@ const Team = require('../models/Teams')
 
 module.exports = {
     //getAll
-getAll: (req, res) => {
-    Team.find((err, teams) => {
-        if(err) {
-            return res.status(500).send('Erro ao buscar os times.')
-        } else {
-            return res.status(200).send({
-                message: "Sucesso!",
-                teams
-            })
-        }
-    })
-},
+    getAll: (req, res) => {
+        Team.find((err, teams) => {
+            if(err) {
+                return res.status(500).send('Erro ao buscar os times.')
+            } else {
+                return res.status(200).send({
+                    message: "Sucesso!",
+                    teams
+                })
+            }
+        })
+    },
 
-//getAllByState
-getAllByState: (req, res) => {
-    const state = req.query.state
+    //getTeamById
 
-    Team.find(state, (err, teams) => {
-        if(err) {
-            return res.status(400).send('Times não encontrados')
-        }
-    })
-},
+    //getTeamByName
 
-//getTeamById
+    //getTeamByInitials
 
-//getTeamByName
+    //addTeam
 
-//getTeamByInitials
+    addTeam: (req, res) => {
+        const team = new Team(req.body)
 
-//addTeam
+        team.save((err) => {
+            if(err) {
+                return res.status(400).send(err)
+            } else {
+                return res.status(202).send({
+                    message: "Time cadastrado.",
+                    team
+                })
+            }
+        })
+    }
 
-addTeam: (req, res) => {
-    const teamBody = req.body
-    const team = new Team(teamBody)
+    //updateTeam
 
-    Team.save((err) => {
-        if(err) {
-            return res.status.send(err)
-        } else {
-            return res.status(202).send({
-                message: "Time cadastrado.",
-                team
-            })
-        }
-    })
-}
+    //updateTeamCoach
 
-//updateTeam
-
-//updateTeamCoach
-
-//deleteTeam
+    //deleteTeam
 }
