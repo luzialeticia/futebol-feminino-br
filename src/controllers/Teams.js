@@ -28,15 +28,15 @@ module.exports = {
     },
 
     //getById
-    // getById: (req, res) => {
-    //     const { id } = req.params
+    getById: (req, res) => {
+        const { id } = req.params
 
-    //     Team.findById(id, (err, team) => {
-    //         if(err) {
-    //             res.status(400).send('Time não encontrado.')
-    //         }
-    //     })
-    // }
+        Team.findById(id, (err, team) => {
+            if(err) {
+                res.status(400).send('Time não encontrado.')
+            }
+        })
+    },
 
     //getTeamByName
 
