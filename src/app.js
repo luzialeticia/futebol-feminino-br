@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
-const db = require('./models/repository')
+const db = require('./database/db')
 const index = require('./routes/index')
 const teams = require('./routes/Teams')
 
