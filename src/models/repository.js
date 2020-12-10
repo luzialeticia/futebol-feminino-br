@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
-const DB_URL = 'mongodb://localhost:27017/brazilian-soccer-championship'
+const config = require('../config/keys.config')
 
 const connect = () => {
-    mongoose.connect(DB_URL, { useNewUrlParser: true })
-    const connection = mongoose.connection
-
-    connection.on('error', () => console.error('Error on connection!'))
-    connection.once('open', () => console.log('Database connected!'))
+    mongoose.connect(config.DB_URL, { useNewUrlParser: true })
+        .then(() => console.log('Database connected!'))
+        .catch((err) => console.log('Error on connection.', err))
+    mongoose.set('useFindAndModify', false)
 }
 
 module.exports = { connect }
