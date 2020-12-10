@@ -1,6 +1,7 @@
 const Team = require('../models/Teams')
 
-//getAll
+module.exports = {
+    //getAll
 const getAll = (req, res) => {
     Team.find((err, teams) => {
         if(err) {
@@ -54,9 +55,4 @@ const addTeam = (req, res) => {
 //updateTeamCoach
 
 //deleteTeam
-
-module.exports = {
-    getAll,
-    addTeam,
-    getAllByState
 }
