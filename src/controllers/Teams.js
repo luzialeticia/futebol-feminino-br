@@ -34,6 +34,8 @@ module.exports = {
         Team.findById(id, (err, team) => {
             if(err) {
                 res.status(400).send('Time não encontrado.')
+            } else  {
+                res.status(200).json(team)
             }
         })
     },
