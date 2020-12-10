@@ -2,7 +2,7 @@ const Team = require('../models/Teams')
 
 module.exports = {
     //getAll
-const getAll = (req, res) => {
+getAll: (req, res) => {
     Team.find((err, teams) => {
         if(err) {
             return res.status(500).send('Erro ao buscar os times.')
@@ -13,18 +13,18 @@ const getAll = (req, res) => {
             })
         }
     })
-}
+},
 
 //getAllByState
-const getAllByState = (req, res) => {
-    const { state } = req.query
+getAllByState: (req, res) => {
+    const state = req.query.state
 
     Team.find(state, (err, teams) => {
         if(err) {
             return res.status(400).send('Times não encontrados')
         }
     })
-}
+},
 
 //getTeamById
 
@@ -34,13 +34,13 @@ const getAllByState = (req, res) => {
 
 //addTeam
 
-const addTeam = (req, res) => {
+addTeam: (req, res) => {
     const teamBody = req.body
     const team = new Team(teamBody)
 
-    team.save((error) => {
-        if(error) {
-            return res.status.send(error)
+    Team.save((err) => {
+        if(err) {
+            return res.status.send(err)
         } else {
             return res.status(202).send({
                 message: "Time cadastrado.",
