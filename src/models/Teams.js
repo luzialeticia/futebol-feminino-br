@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const teamSchema = new Schema({
+const Team = new Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
         auto: true,
@@ -32,6 +32,4 @@ const teamSchema = new Schema({
     versionKey: false
 })
 
-const TeamsCollection = mongoose.model('teams', teamSchema)
-
-module.exports = TeamsCollection
+module.exports = mongoose.model('Team', Team)
