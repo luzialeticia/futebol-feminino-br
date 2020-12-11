@@ -13,7 +13,7 @@ Team.route('/:id', cors())
     .patch(controller.update)
     .delete(controller.delete)
 
-Team.get('/sate/:state', cors(), controller.getAllByState)
+Team.get('/state/:state', cors(), controller.getAllByState)
 Team.get('/name/:name', cors(), controller.getByName)
 Team.get('/initials/:initials', cors(), controller.getByInitials)
 
