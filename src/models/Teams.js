@@ -11,7 +11,6 @@ const Team = new Schema({
         type: String,
         required: true
     },
-    popularName: String,
     initials: {
         type: String,
         required: true,

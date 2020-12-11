@@ -41,12 +41,12 @@ module.exports = {
         })
     },
 
-    //getByPopularName
-    getByPopularName: (req, res) => {
+    //getByName
+    getByName: (req, res) => {
         const { name } = req.params
         const capitalizeName = name.charAt(0).toUpperCase() + name.slice(1)
 
-        Team.find({ popularName: capitalizeName }, (err, team) => {
+        Team.find({ name: new RegExp(capitalizeName, 'i') }, (err, team) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar time.', err)
             } else if(team == "") {
