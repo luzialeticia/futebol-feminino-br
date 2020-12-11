@@ -2,24 +2,19 @@ const Team = require('../models/Teams')
 
 module.exports = {
     //getAll
-    getAll: (req, res, next) => {
-        Team.find()
-            .then((teams) => {
-                res.status(200).json(teams)
-            })
-            .catch((err) => next(err))
-        // Team.find((err, teams) => {
-        //     if(err) {
-        //         return res.status(500).json('Erro ao buscar os times.', err)
-        //     } else {
-        //         return res.status(200).json(teams)
-        //     }
-        // })
+    getAll: (req, res) => {
+        Team.find((err, teams) => {
+            if(err) {
+                return res.status(500).json('Erro ao buscar os times.', err)
+            } else {
+                return res.status(200).json(teams)
+            }
+        })
     },
 
     //getAllByState
     getAllByState: (req, res) => {
-        const state = req.params.state
+        const { state } = req.params
         const stateUpperCased = state.toUpperCase()
 
         Team.find({ state: stateUpperCased }, (err, teams) => {
@@ -35,7 +30,7 @@ module.exports = {
 
     //getById
     getById: (req, res) => {
-        const id = req.params.id
+        const { id } = req.params
 
         Team.findById(id, (err, team) => {
             if(err) {
