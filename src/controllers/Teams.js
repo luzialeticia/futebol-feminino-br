@@ -5,7 +5,7 @@ module.exports = {
     getAll: (req, res) => {
         Team.find((err, teams) => {
             if(err) {
-                return res.status(500).json('Erro ao buscar os times.')
+                return res.status(500).json('Erro ao buscar os times.', err)
             } else {
                 return res.status(200).json(teams)
             }
@@ -19,7 +19,7 @@ module.exports = {
 
         Team.find({ state: stateUpperCased }, (err, teams) => {
             if(err) {
-                return res.status(500).json('Erro ao buscar times.')
+                return res.status(500).json('Erro ao buscar times.', err)
             } else if(teams == "") {
                 return res.status(404).json('Times não encontrados.')
             } else {
@@ -34,9 +34,9 @@ module.exports = {
 
         Team.findById({ _id: id }, (err, team) => {
             if(err) {
-                res.status(400).json('Time não encontrado.')
+                return res.status(404).json('Time não encontrado.')
             } else {
-                res.status(200).json(team)
+                return res.status(200).json(team)
             }
         })
     },
@@ -48,7 +48,9 @@ module.exports = {
 
         Team.find({ popularName: capitalizeName }, (err, team) => {
             if(err) {
-                return res.status(500).json('Erro ao buscar time.')
+                return res.status(500).json('Erro ao buscar time.', err)
+            } else if(team == "") {
+                return res.status(400).json('Time não encontrado.')
             } else {
                 res.status(200).json(team)
             }
@@ -62,7 +64,9 @@ module.exports = {
 
         Team.find({ initials: initialsUpperCased }, (err, team) => {
             if(err) {
-                return res.status(500).json('Erro so buscar time.')
+                return res.status(500).json('Erro so buscar time.', err)
+            } else if(team == "") {
+                return res.status(400).json('Time não encontrado.')
             } else {
                 return res.status(200).json(team)
             }
