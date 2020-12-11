@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 app.use('/', cors(), index)
-app.use('/teams', teams)
-app.use('/players', players)
+app.use('/teams', cors(), teams)
+app.use('/players', cors(), players)
 
 module.exports = app
