@@ -14,6 +14,7 @@ Team.route('/:id', cors())
     .delete(controller.delete)
 
 Team.get('/state/:state', cors(), controller.getAllByState)
+Team.get('/division/:division', cors(), controller.getAllByDivision)
 Team.get('/name/:name', cors(), controller.getByName)
 Team.get('/initials/:initials', cors(), controller.getByInitials)
 
