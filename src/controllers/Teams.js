@@ -64,7 +64,7 @@ module.exports = {
 
         Team.find({ initials: initialsUpperCased }, (err, team) => {
             if(err) {
-                return res.status(500).json('Erro so buscar time.', err)
+                return res.status(500).json('Erro ao buscar time.', err)
             } else if(team == "") {
                 return res.status(400).json('Time não encontrado.')
             } else {
@@ -96,23 +96,24 @@ module.exports = {
         const body = req.body
         const updated = { new: true }
 
-        Team.findByIdAndUpdate(id, body, updated,
+        Team.findByIdAndUpdate(
+            id,
+            body,
+            updated,
             (err, team) => {
                 if(err) {
-                    return res.status(500).json('Erro ao editar time.', err)
+                    return res.status(500).json(`Erro ao editar time. ${err}`)
                 } else if(team) {
                     return res.status(200).json({
                         message: 'Time editado com sucesso!',
                         team
                     })
-                } else {
+                } else if(team == ""){
                     return res.status(404).json('Time não encontrado.')
                 }
             }
         )
     }
-
-    //updateTeamCoach
 
     //deleteTeam
 }

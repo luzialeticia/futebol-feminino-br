@@ -9,5 +9,6 @@ router.get('/:id', cors(), controller.getById)
 router.get('/name/:name', cors(), controller.getByPopularName)
 router.get('/initials/:initials', cors(), controller.getByInitials)
 router.post('/add', cors(), controller.addTeam)
+router.put('/update/:id', cors(), controller.update)
 
 module.exports = router
