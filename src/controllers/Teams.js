@@ -32,7 +32,7 @@ module.exports = {
     getById: (req, res) => {
         const id = req.params.id
 
-        Team.findById({ _id: id }, (err, team) => {
+        Team.findById(id, (err, team) => {
             if(err) {
                 return res.status(404).json('Time não encontrado.')
             } else {
@@ -88,9 +88,29 @@ module.exports = {
                 })
             }
         })
-    }
+    },
 
-    //updateTeam
+    //updatePUT
+    update: (req, res) => {
+        const { id } = req.params
+        const body = req.body
+        const updated = { new: true }
+
+        Team.findByIdAndUpdate(id, body, updated,
+            (err, team) => {
+                if(err) {
+                    return res.status(500).json('Erro ao editar time.', err)
+                } else if(team) {
+                    return res.status(200).json({
+                        message: 'Time editado com sucesso!',
+                        team
+                    })
+                } else {
+                    return res.status(404).json('Time não encontrado.')
+                }
+            }
+        )
+    }
 
     //updateTeamCoach
 
