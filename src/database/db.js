@@ -1,8 +1,15 @@
 const mongoose = require('mongoose')
-const config = require('../config/keys.config')
+const dotEnv = require('dotenv')
+
+dotEnv.config()
+const mongoUri = process.env.MONGO_URI
 
 const connect = () => {
-    mongoose.connect(config.DB_URL, { useNewUrlParser: true })
+    mongoose.connect(mongoUri, { useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false})
+
         .then(() => console.log('Database connected!'))
         .catch((err) => console.log('Error on connection.', err))
     mongoose.set('useFindAndModify', false)
