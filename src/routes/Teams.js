@@ -11,5 +11,6 @@ router.get('/initials/:initials', cors(), controller.getByInitials)
 router.post('/add', cors(), controller.addTeam)
 router.put('/update/:id', cors(), controller.update)
 router.patch('/update/:id', cors(), controller.update)
+router.delete('/delete/:id', cors(), controller.delete)
 
 module.exports = router
