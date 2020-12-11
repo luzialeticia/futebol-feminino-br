@@ -17,6 +17,10 @@ const Team = new Schema({
         minlength: 3,
         maxlength: 3
     },
+    division: {
+        type: String,
+        required: true
+    },
     state: {
         type: String,
         required: true,
