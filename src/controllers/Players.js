@@ -19,6 +19,17 @@ module.exports = {
 
     //add
     add: (req, res) => {
-        
+        const player = new Player(req.body)
+
+        player.save((err) => {
+            if(err) {
+                return res.status(400).json(err)
+            } else {
+                return res.status(202).json({
+                    message: "Jogadora cadastrada.",
+                    player
+                })
+            }
+        })
     }
 }
