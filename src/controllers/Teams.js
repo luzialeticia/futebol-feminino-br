@@ -113,7 +113,10 @@ module.exports = {
                 }
             }
         )
-    }
+    },
 
     //deleteTeam
+    delet: (req, res) => {
+        
+    }
 }
