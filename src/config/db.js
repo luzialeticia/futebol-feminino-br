@@ -12,7 +12,6 @@ const connect = () => {
 
         .then(() => console.log('Database connected!'))
         .catch((err) => console.log('Error on connection.', err))
-    mongoose.set('useFindAndModify', false)
 }
 
 module.exports = { connect }
