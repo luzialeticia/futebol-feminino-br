@@ -7,6 +7,10 @@ const Player = new Schema({
         auto: true,
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
     nickname: String,
     team: {
         type: String,
@@ -14,8 +18,8 @@ const Player = new Schema({
     },
     number: {
         type: Number,
-        min: 1,
-        max: 3,
+        minlength: 1,
+        maxlength: 3,
         required: true
     },
     birth: {
