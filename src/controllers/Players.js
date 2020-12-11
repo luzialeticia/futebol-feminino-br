@@ -46,6 +46,22 @@ module.exports = {
         })
     },
 
+    //add
+    add: (req, res) => {
+        const player = new Player(req.body)
+
+        player.save((err) => {
+            if(err) {
+                return res.status(400).json(err)
+            } else {
+                return res.status(202).json({
+                    message: "Jogadora cadastrada.",
+                    player
+                })
+            }
+        })
+    },
+
     //update
     update: (req, res) => {
         const { id } = req.params
@@ -71,18 +87,15 @@ module.exports = {
         )
     },
 
-    //add
-    add: (req, res) => {
-        const player = new Player(req.body)
+    //delete
+    delete: (req, res) => {
+        const { id } = req.params
 
-        player.save((err) => {
+        Player.findByIdAndDelete(id, (err) => {
             if(err) {
-                return res.status(400).json(err)
+                return res.status(404).json('Jogadora não encontrada.')
             } else {
-                return res.status(202).json({
-                    message: "Jogadora cadastrada.",
-                    player
-                })
+                return res.status(200).json('Jogadora deletada.')
             }
         })
     }
