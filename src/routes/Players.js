@@ -1,14 +1,17 @@
 const express = require('express')
-const router = express.Router()
+const Player = express.Router()
 const controller = require('../controllers/Players')
 const cors = require('cors')
 
-router.get('/team/:team', cors(), controller.getAllByTeam)
-router.get('/:id', cors(), controller.getById)
-router.get('/name/:name', controller.getByName)
-router.post('/add', cors(), controller.add)
-router.put('/update/:id', cors(), controller.update)
-router.patch('/update/:id', cors(), controller.update)
-router.delete('/delete/:id', cors(), controller.delete)
+Player.post('/', controller.add)
 
-module.exports = router
+Player.route('/:id', cors())
+    .get(controller.getById)
+    .put(controller.update)
+    .patch(controller.update)
+    .delete(controller.delete)
+
+Player.get('/team/:team', cors(), controller.getAllByTeam)
+Player.get('/name/:name', cors(), controller.getByName)
+
+module.exports = Player

@@ -11,6 +11,7 @@ Team.route('/:id', cors())
     .get(controller.getById)
     .put(controller.update)
     .patch(controller.update)
+    .delete(controller.delete)
 
 Team.get('/sate/:state', cors(), controller.getAllByState)
 Team.get('/name/:name', cors(), controller.getByName)
