@@ -74,7 +74,6 @@ module.exports = {
     },
 
     //addTeam
-
     addTeam: (req, res) => {
         const team = new Team(req.body)
 
