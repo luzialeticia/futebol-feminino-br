@@ -33,7 +33,7 @@ module.exports = {
         const { division } = req.params
         const divisionUpperCased = division.toUpperCase()
 
-        Team.find({ division: divisionUpperCased }, (err, teams) => {
+        Team.find({ division: new RegExp(divisionUpperCased, 'i') }, (err, teams) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar times.', err)
             } else if(teams == "") {
