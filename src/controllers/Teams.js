@@ -119,7 +119,7 @@ module.exports = {
     delete: (req, res) => {
         const { id } = req.params
 
-        Team.findByIdAndUpdate(id, (err) => {
+        Team.findByIdAndDelete(id, (err) => {
             if(err) {
                 return res.status(404).json('Time não encontrado.')
             } else {
