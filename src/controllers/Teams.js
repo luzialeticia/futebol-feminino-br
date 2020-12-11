@@ -116,7 +116,15 @@ module.exports = {
     },
 
     //deleteTeam
-    delet: (req, res) => {
-        
+    delete: (req, res) => {
+        const { id } = req.params
+
+        Team.findByIdAndUpdate(id, (err) => {
+            if(err) {
+                return res.status(404).json('Time não encontrado.')
+            } else {
+                return res.status(200).json('Time deletado.')
+            }
+        })
     }
 }
