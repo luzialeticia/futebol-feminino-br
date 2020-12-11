@@ -46,10 +46,10 @@ module.exports = {
         const { name } = req.params
         const capitalizeName = name.charAt(0).toUpperCase() + name.slice(1)
 
-        Team.find({ name: new RegExp(capitalizeName, 'i') }, (err, team) => {
+        Team.findOne({ name: new RegExp(capitalizeName, 'i') }, (err, team) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar time.', err)
-            } else if(team == "") {
+            } else if(team == null) {
                 return res.status(400).json('Time não encontrado.')
             } else {
                 res.status(200).json(team)
@@ -62,10 +62,10 @@ module.exports = {
         const { initials } = req.params
         const initialsUpperCased = initials.toUpperCase()
 
-        Team.find({ initials: initialsUpperCased }, (err, team) => {
+        Team.findOne({ initials: initialsUpperCased }, (err, team) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar time.', err)
-            } else if(team == "") {
+            } else if(team = null) {
                 return res.status(400).json('Time não encontrado.')
             } else {
                 return res.status(200).json(team)
