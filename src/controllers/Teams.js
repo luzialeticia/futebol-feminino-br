@@ -28,6 +28,22 @@ module.exports = {
         })
     },
 
+    //getAllTeamsByDivision
+    getAllByDivision: (req, res) => {
+        const { division } = req.params
+        const divisionUpperCased = division.toUpperCase()
+
+        Team.find({ division: divisionUpperCased }, (err, teams) => {
+            if(err) {
+                return res.status(500).json('Erro ao buscar times.', err)
+            } else if(teams == "") {
+                return res.status(404).json('Times não encontrados.')
+            } else {
+                res.status(200).json(teams)
+            }
+        })
+    },
+
     //getById
     getById: (req, res) => {
         const { id } = req.params
