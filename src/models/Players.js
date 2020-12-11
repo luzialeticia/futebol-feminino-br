@@ -11,7 +11,6 @@ const Player = new Schema({
         type: String,
         required: true
     },
-    nickname: String,
     team: {
         type: String,
         required: true
