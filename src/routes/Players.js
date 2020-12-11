@@ -4,6 +4,7 @@ const controller = require('../controllers/Players')
 const cors = require('cors')
 
 router.get('/team/:team', cors(), controller.getAllByTeam)
+router.get('/:id', cors(), controller.getById)
 router.post('/add', cors(), controller.add)
 
 module.exports = router
