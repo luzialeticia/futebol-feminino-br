@@ -2,14 +2,19 @@ const Team = require('../models/Teams')
 
 module.exports = {
     //getAll
-    getAll: (req, res) => {
-        Team.find((err, teams) => {
-            if(err) {
-                return res.status(500).json('Erro ao buscar os times.', err)
-            } else {
-                return res.status(200).json(teams)
-            }
-        })
+    getAll: (req, res, next) => {
+        Team.find()
+            .then((teams) => {
+                res.status(200).json(teams)
+            })
+            .catch((err) => next(err))
+        // Team.find((err, teams) => {
+        //     if(err) {
+        //         return res.status(500).json('Erro ao buscar os times.', err)
+        //     } else {
+        //         return res.status(200).json(teams)
+        //     }
+        // })
     },
 
     //getAllByState
