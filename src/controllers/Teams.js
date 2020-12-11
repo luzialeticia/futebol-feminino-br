@@ -15,9 +15,9 @@ module.exports = {
     //getAllByState
     getAllByState: (req, res) => {
         const state = req.params.state
-        const capitalizeState = state.toUpperCase()
+        const stateUpperCased = state.toUpperCase()
 
-        Team.find({ state: capitalizeState }, (err, teams) => {
+        Team.find({ state: stateUpperCased }, (err, teams) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar times.')
             } else if(teams == "") {
@@ -55,7 +55,19 @@ module.exports = {
         })
     },
 
-    //getTeamByInitials
+    //getByInitials
+    getByInitials: (req, res) => {
+        const { initials } = req.params
+        const initialsUpperCased = initials.toUpperCase()
+
+        Team.find({ initials: initialsUpperCased }, (err, team) => {
+            if(err) {
+                return res.status(500).json('Erro so buscar time.')
+            } else {
+                return res.status(200).json(team)
+            }
+        })
+    },
 
     //addTeam
 
