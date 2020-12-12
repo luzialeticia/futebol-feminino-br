@@ -13,7 +13,7 @@ API desenvolvida para o projeto final de conclusão do curso de Back-end da {rep
 
 A ideia de uma API com estatísticas do futebol feminino no Brasil surgiu da necessidade de um grupo de torcedoras em obter informações sobre os campeonatos, times e jogadoras. O futebol feminino no país ainda é muito sub-valorizado e os dados disponíveis publicamente sobre o esporte são escassos.
 
-Inspirada nas diversas APIs existentes com dados do futebol masculino, criei esta que tem a intenção de reunir estatísticas para fins de consulta, cadastro e atualização sobreo futebol feminino no Brasil.
+Inspirada nas diversas APIs existentes com dados do futebol masculino, criei esta que tem a intenção de reunir estatísticas para fins de consulta, cadastro e atualização sobre o futebol feminino no Brasil.
 
 ### Tecnologias utilizadas:
 
@@ -58,7 +58,17 @@ Inspirada nas diversas APIs existentes com dados do futebol masculino, criei est
 
 ![MVC](./assets/arquitetura-api@2x.png)
 
-### Funcionalidades
+### Consumindo a API
+
+https://futebol-feminino-br.herokuapp.com/
+```json
+    {
+        "titulo": "Futebol Feminino Brasileiro",
+        "edicao": "2020"
+    }
+```
+
+#### Funcionalidades e suas respectivas rotas
 
 Método | Endpoint | Descrição
 ------ | ------- | ---------:
@@ -67,7 +77,7 @@ POST | /players/ | Cadastra uma jogadora.
 GET | /teams/ | Retorna todos os times cadastrados.
 GET | /players/team/:team | Retorna todas as jogadoras de um determinado time.
 GET | /teams/state/:state | Retorna todos os times de um determinado estado.
-GET | /teams/division/:division | Retorna todos os times de uma série/divisão do campeonato brasileiro.
+GET | /teams/division/:division   | Retorna todos os times de uma série/divisão do campeonato brasileiro.
 GET | /teams/:id | Retorna um único time pelo Id.
 GET | /players/:id | Retorna uma única jogadora pelo Id.
 GET | /teams/name/:name | Retorna um único time pelo seu nome.
@@ -116,16 +126,6 @@ Execute:
 
 - Crie um arquivo `.env` com as credenciais do seu Banco de Dados
 - Use o Postman ou Insomnia para realizar as requisições ou utilize no seu front-end.
-
-### Consumindo a API
-
-https://futebol-feminino-br.herokuapp.com/
-```json
-    {
-        "titulo": "Futebol Feminino Brasileiro",
-        "edicao": "2020"
-    }
-```
 
 #### API retorna os jsons:
 
