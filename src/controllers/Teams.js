@@ -78,7 +78,7 @@ module.exports = {
         const { initials } = req.params
         const initialsUpperCased = initials.toUpperCase()
 
-        Team.findOne({ initials: initialsUpperCased }, (err, team) => {
+        Team.findOne({ initials: new RegExp(initialsUpperCased, 'i')}, (err, team) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar time.', err)
             } else if(team = null) {
