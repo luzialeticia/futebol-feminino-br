@@ -78,10 +78,10 @@ module.exports = {
         const { initials } = req.params
         const initialsUpperCased = initials.toUpperCase()
 
-        Team.find({ initials: initialsUpperCased }, (err, team) => {
+        Team.findOne({ initials: initialsUpperCased }, (err, team) => {
             if(err) {
                 return res.status(500).json('Erro ao buscar time.', err)
-            } else if(team = null) {
+            } else if(team == null) {
                 return res.status(400).json('Time não encontrado.')
             } else {
                 return res.status(200).json(team)
