@@ -8,7 +8,8 @@ const connect = () => {
     mongoose.connect(mongoUri, { useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-        useFindAndModify: false})
+        useFindAndModify: false,
+        family: 4})
 
         .then(() => console.log('Database connected!'))
         .catch((err) => console.log('Error on connection.', err))
