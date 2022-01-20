@@ -15,5 +15,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7"
   }
 }
